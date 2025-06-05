@@ -1,54 +1,27 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const frutas = [
-    { nome: "Banana", imagem: "frutas/banana.jpg", descricao: "Banana é rica em potássio." },
-    { nome: "Maçã", imagem: "frutas/maca.jpg", descricao: "Maçã ajuda na digestão." },
-    { nome: "Laranja", imagem: "frutas/laranja.jpg", descricao: "Laranja é fonte de vitamina C." }
-  ];
+let frutas = [
+  { nome: "Maçã", arquivo: "maca.png" },
+  { nome: "Banana", arquivo: "banana.png" },
+  { nome: "Uva", arquivo: "uva.png" }
+];
 
-  let body = document.body;
+async function carregarImagemComoBase64(nomeArquivo) {
+  let response = await fetch(`frutas/${nomeArquivo}`);
+  
+}
 
-  let titulo = document.createElement("h2");
-  titulo.textContent = "Escolha uma fruta:";
-  body.appendChild(titulo);
+async function criarInterface() {
+  let app = document.getElementById("app");
 
-  let select = document.createElement("select");
-  select.id = "seletor";
-  let optionDefault = document.createElement("option");
-  optionDefault.text = "-- selecione --";
-  optionDefault.disabled = true;
-  optionDefault.selected = true;
-  select.appendChild(optionDefault);
-  frutas.forEach(f => {
-    let op = document.createElement("option");
-    op.value = f.nome;
-    op.textContent = f.nome;
-    select.appendChild(op);
-  });
-  body.appendChild(select);
+    let botao = document.createElement("button");
+    botao.innerText = fruta.nome;
 
-  let img = document.createElement("img");
-  img.style.maxWidth = "200px";
-  img.alt = "Imagem da fruta";
-  body.appendChild(img);
+    botao.addEventListener("click", async () => {
+     
+      imagem.src = base64;
+      descricao.innerText = `Você escolheu: ${fruta.nome}`;
+    });
 
-  let texto = document.createElement("p");
-  texto.id = "descricao";
-  body.appendChild(texto);
+    botoesContainer.appendChild(botao);
+  }
 
-  select.addEventListener("change", async () => {
-    let frutaSelecionada = frutas.find(f => f.nome === select.value);
-    if (frutaSelecionada) {
-      let novaImg = new Image();
-      novaImg.src = frutaSelecionada.imagem;
-
-      try {
-        await novaImg.decode(); // garante que carregou
-        img.src = novaImg.src;
-        texto.textContent = frutaSelecionada.descricao;
-      } catch (e) {
-        texto.textContent = "Erro ao carregar imagem.";
-        img.src = "";
-      }
-    }
-  });
-});
+criarInterface();

@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
       resultado.textContent = "Digite os nomes.";
       return;
     }
-
+  
     let nomes = entrada.split(",").map(n => n.trim());
     let regex = /^[A-Za-zÀ-ÿ\s]+$/;
     let usados = new Set();

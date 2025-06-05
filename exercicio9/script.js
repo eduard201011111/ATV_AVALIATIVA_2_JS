@@ -8,13 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function validar(cpf, nome, nascimento, telefone, email) {
   let erros = [];
-
-  if (!/^\d{2}\.\d{3}\.\d{3}-\d{2}$/.test(cpf)) erros.push("CPF inválido");
-  if (!/^[A-Za-zÀ-ÿ\s]+$/.test(nome)) erros.push("Nome inválido");
-  if (!/^\d{2}\/\d{2}\/\d{4}$/.test(nascimento)) erros.push("Data inválida");
-  if (!/^\(\d{2}\) \d{5}-\d{4}$/.test(telefone)) erros.push("Telefone inválido");
-  if (!/^[\w\.-]+@(gmail|hotmail|outlook)\.(com|com\.br|org)$/.test(email)) erros.push("Email inválido");
-
   return erros;
 }
 
