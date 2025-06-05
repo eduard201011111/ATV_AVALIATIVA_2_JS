@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   
     let nomes = entrada.split(",").map(n => n.trim());
-    let regex = /^[A-Za-zÀ-ÿ\s]+$/;
+    let regex
     let usados = new Set();
 
     for (let nome of nomes) {
